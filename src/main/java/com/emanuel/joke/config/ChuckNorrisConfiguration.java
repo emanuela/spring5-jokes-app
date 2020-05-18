@@ -13,22 +13,17 @@
  *
  */
 
-package com.emanuel.joke.services;
+package com.emanuel.joke.config;
 
 import guru.springframework.norris.chuck.ChuckNorrisQuotes;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Service
-public class JokeServiceImpl implements JokeService {
+@Configuration
+public class ChuckNorrisConfiguration {
 
-    private final ChuckNorrisQuotes chuckNorrisQuotes;
-
-    public JokeServiceImpl(ChuckNorrisQuotes chuckNorrisQuotes) {
-        this.chuckNorrisQuotes = chuckNorrisQuotes;
-    }
-
-    @Override
-    public String getJoke() {
-        return chuckNorrisQuotes.getRandomQuote();
+    @Bean
+    public ChuckNorrisQuotes chuckNorrisQuotes() {
+        return new ChuckNorrisQuotes();
     }
 }
